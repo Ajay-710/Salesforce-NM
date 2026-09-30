@@ -1,0 +1,19 @@
+# Salesforce
+.sfdx/
+.sf/
+*.scratch
+
+# Sensitive credentials - DO NOT COMMIT
+session_id.txt
+queue_ids.json
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.env
+venv/
+
+# OS
+.DS_Store
+Thumbs.db
