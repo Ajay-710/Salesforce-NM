@@ -1,16 +1,48 @@
-# Multi-Line Insurance Policy and Claims Management System
-# Team ID: 6ab4d71da238dc999eb5bc49
+# 🏦 Multi-Line Insurance Policy & Claims Management System — Salesforce Agentforce AI
 
-[![Salesforce](https://img.shields.io/badge/Platform-Salesforce%20Lightning-blue?logo=salesforce)](https://www.salesforce.com)
-[![Apex Test Coverage](https://img.shields.io/badge/Apex%20Coverage-95.8%25-brightgreen)](force-app/main/default/classes/ClaimsAdjusterControllerTest.cls)
-[![Automation](https://img.shields.io/badge/Flows%20%26%20Approvals-5%20Flows%20%7C%201%20Approval-orange)](#-process-automation--flows)
-[![Architecture](https://img.shields.io/badge/Architecture-Multi--Line%20Insurance-purple)](#-architecture-overview)
+<p align="center">
+  <img src="https://upload.wikimedia.org/wikipedia/en/thumb/6/6e/Alpha_College_of_Engineering_logo.png/220px-Alpha_College_of_Engineering_logo.png" alt="Alpha College of Engineering" width="320"/>
+</p>
 
-A comprehensive, enterprise-grade **Salesforce Insurance Policy and Claims Management System** built for multi-line insurance carriers (Auto, Life, and Property). The solution automates end-to-end policy lifecycle management, dynamic premium calculations, intelligent multi-channel claim routing, role-based adjusters assignment, approval workflows, and interactive adjuster consoles using **Lightning Web Components (LWC)** and **Apex**.
+<p align="center">
+  <strong>Alpha College of Engineering, Thirumazhisai, Chennai</strong><br/>
+  <em>(Approved by AICTE and Affiliated to Anna University)</em>
+</p>
+
+![Platform](https://img.shields.io/badge/Platform-Salesforce%20Lightning-00A1E0?logo=salesforce)
+![AI](https://img.shields.io/badge/AI-Apex%20%7C%20LWC%20%7C%20Flow%20Builder-blueviolet)
+![Automation](https://img.shields.io/badge/Automation-5%20Flows%20%7C%201%20Approval%20Process-orange)
+![Coverage](https://img.shields.io/badge/Apex%20Test%20Coverage-95.8%25-brightgreen)
+![Security](https://img.shields.io/badge/Security-Permission%20Sets%20%7C%20RBAC-red)
+![Program](https://img.shields.io/badge/Program-Naan%20Mudhalvan%20%7C%20TNSDC-blue)
+
+A comprehensive, enterprise-grade **Salesforce Insurance Policy and Claims Management System** built for multi-line insurance carriers offering **Auto, Life, and Property** coverage. The solution automates the complete policy lifecycle — from dynamic risk-based premium calculation, intelligent claim triage and multi-channel routing, hierarchical approval workflows for high-value claims (>$50,000), to interactive adjuster workbenches built with **Lightning Web Components (LWC)** and **Apex**.
+
+---
+
+## 👥 Project Team & Institution Details
+
+- **Institution:** Alpha College of Engineering, Thirumazhisai, Chennai *(Approved by AICTE and Affiliated to Anna University)*
+- **Naan Mudhalvan Team ID:** `6ab4d71da238dc999eb5bc49`
+- **Live Salesforce Org ID:** Developer Edition — Agentforce Enabled
+- **Official PDF Report (.pdf):** [Multi_Line_Insurance_Project_Documentation.pdf](docs/Multi_Line_Insurance_Project_Documentation.pdf) *(also in [docs/](docs/))*
+- **Official Word Report (.docx):** [Multi_Line_Insurance_Project_Documentation.docx](docs/Multi_Line_Insurance_Project_Documentation.docx) *(also in [docs/](docs/))*
+- **Salesforce Implementation Screenshots:** [salesforce_screenshots/](salesforce_screenshots/)
+
+### Team Members
+
+| Role in Project | Student Name | Register Number | College Email ID |
+|---|---|---|---|
+| **Team Lead** | Pendem Ajay P | 210123205016 | ajaypendem7@gmail.com |
+| **Team Member** | Viyashkar K A | 210123205034 | viyashkarka@gmail.com |
+| **Team Member** | Bala B | 2101232050003 | bala@gmail.com |
+| **Team Member** | Yogesh K | 210123205035 | gkyogesh2006@gmail.com |
+| **Team Member** | Duraipandi G G | 210123205016 | duraipandi19306@gmail.com |
 
 ---
 
 ## 📑 Table of Contents
+
 - [System Architecture Overview](#-system-architecture-overview)
 - [System Screenshots & Live Demonstration](#-system-screenshots--live-demonstration)
   - [1. Policy Management & Record Detail](#1-policy-management--record-detail)
@@ -199,10 +231,10 @@ Tracks incident claims filed against active policies.
 
 | Flow Name | Type | Trigger / Mechanism | Purpose |
 |-----------|------|---------------------|---------|
-| `ClaimRoutingFlow` | Record-Triggered (Autolaunched) | `Claim__c` after insert | Inspects policy line (`Auto`, `Life`, `Property`) and routes claim ownership to the corresponding queue (`Auto Queue`, `Life Queue`, `Property Queue`). |
+| `ClaimRoutingFlow` | Record-Triggered (Autolaunched) | `Claim__c` after insert | Inspects policy line (`Auto`, `Life`, `Property`) and routes claim ownership to the corresponding queue. |
 | `AutoQuotingFlow` | Screen Flow | Agent Utility / Record Action | Gathers policy input variables, invokes `PremiumCalculator.cls`, and instantly generates quote options. |
 | `Claim Policy Holder State Update` | Record-Triggered (Autolaunched) | `Claim__c` before insert | Automatically inherits the state code from the parent `Policy__c` to ensure regional compliance. |
-| `Claim_Approver_Screen_Flow` | Screen Flow | Quick Action Button (`Approve_Reject_Claim`) | Embeds an interactive modal on the Claim page allowing managers to enter comments and toggle approval status. |
+| `Claim_Approver_Screen_Flow` | Screen Flow | Quick Action Button | Embeds an interactive modal on the Claim page allowing managers to enter comments and toggle approval status. |
 | `Submission_Automation_Flow` | Autolaunched Flow | Claim Submission | Automates status updates, notifications, and task assignments upon initial claim filing. |
 
 ### 🛡️ High-Value Claim Approval Process
@@ -279,12 +311,6 @@ Role-based access control (RBAC) is enforced through 3 custom permission sets:
 
 ## ✅ Verification & Testing
 
-Run the automated verification script to validate all components deployed in the target environment:
-
-```bash
-python verify_all.py
-```
-
 **Verification Checklist:**
 - [x] Custom Objects: `Policy__c`, `Claim__c` deployed
 - [x] Custom Fields: Premium, Square Footage, VIN, Claim Amount, etc. verified
@@ -306,22 +332,11 @@ Salesforce-NM/
 │   └── main/default/
 │       ├── classes/
 │       │   ├── ClaimsAdjusterController.cls
-│       │   ├── ClaimsAdjusterController.cls-meta.xml
 │       │   ├── ClaimsAdjusterControllerTest.cls
-│       │   ├── ClaimsAdjusterControllerTest.cls-meta.xml
-│       │   ├── PremiumCalculator.cls
-│       │   └── PremiumCalculator.cls-meta.xml
+│       │   └── PremiumCalculator.cls
 │       ├── lwc/
 │       │   ├── claimsDashboardLwc/
-│       │   │   ├── claimsDashboardLwc.html
-│       │   │   ├── claimsDashboardLwc.js
-│       │   │   ├── claimsDashboardLwc.js-meta.xml
-│       │   │   └── claimsDashboardLwc.css
 │       │   └── claimTileLwc/
-│       │       ├── claimTileLwc.html
-│       │       ├── claimTileLwc.js
-│       │       ├── claimTileLwc.js-meta.xml
-│       │       └── claimTileLwc.css
 │       ├── objects/
 │       │   ├── Policy__c/
 │       │   └── Claim__c/
@@ -329,10 +344,6 @@ Salesforce-NM/
 │       │   ├── Insurance_Agent_Access.permissionset-meta.xml
 │       │   ├── Claims_Adjuster_Access.permissionset-meta.xml
 │       │   └── Claims_Manager_Access.permissionset-meta.xml
-│       ├── queues/
-│       │   ├── Auto_Queue.queue-meta.xml
-│       │   ├── Life_Queue.queue-meta.xml
-│       │   └── Property_Queue.queue-meta.xml
 │       └── quickActions/
 │           └── Claim__c.Approve_Reject_Claim.quickAction
 ├── salesforce_screenshots/
@@ -343,13 +354,24 @@ Salesforce-NM/
 │   ├── p5.png          # Claims Routing Queues
 │   ├── p6.png          # Regional Adjuster Public Groups
 │   └── p7.png          # Apex Execution & Tests Log
+├── docs/
+│   ├── Multi_Line_Insurance_Project_Documentation.docx
+│   └── Multi_Line_Insurance_Project_Documentation.pdf
 ├── sfdx-project.json
-├── verify_all.py
 └── README.md
 ```
 
 ---
 
-## 👨‍💻 Author & Acknowledgements
-- Developed by **Ajay Pendem** as part of the Final Year Capstone Project.
-- Built on the **Salesforce Customer 360 Platform**.
+## 🏫 Academic Information
+
+- **Project Type:** Final Year Capstone Project
+- **Institution:** Alpha College of Engineering, Thirumazhisai, Chennai
+- **Platform:** Salesforce Developer Edition (Lightning Experience)
+- **Program:** Naan Mudhalvan | TNSDC
+- **Naan Mudhalvan Team ID:** `6ab4d71da238dc999eb5bc49`
+- **Academic Year:** 2026
+
+---
+
+*Built with ❤️ on Salesforce Lightning Platform by Team Pendem Ajay P & Associates*
